@@ -4,7 +4,7 @@ const getRandomIndex = (max) => Math.floor(Math.random() * max);
 // Shuffle an array of cards
 const shuffleCards = (cards) => {
   // Loop over the card deck array once
-  for (let currentIndex = 0; currentIndex < cards.length; currentIndex += 1) {
+  for (let currentIndex = 0; currentIndex < cards.length; currentIndex++) {
     // Select a random index in the deck
     const randomIndex = getRandomIndex(cards.length);
     // Select the card that corresponds to randomIndex
@@ -26,14 +26,14 @@ const makeDeck = () => {
   const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
 
   // Loop over the suits array
-  for (let suitIndex = 0; suitIndex < suits.length; suitIndex += 1) {
+  for (let suitIndex = 0; suitIndex < suits.length; suitIndex++) {
     // Store the current suit in a variable
     const currentSuit = suits[suitIndex];
 
     // Loop from 1 to 13 to create all cards for a given suit
     // Notice rankCounter starts at 1 and not 0, and ends at 13 and not 12.
     // This is an example of a loop without an array.
-    for (let rankCounter = 1; rankCounter <= 13; rankCounter += 1) {
+    for (let rankCounter = 1; rankCounter <= 13; rankCounter++) {
       // By default, card name and card rank are the same as rankCounter
       let cardName = `${rankCounter}`;
       let cardRank = rankCounter;
@@ -65,6 +65,28 @@ const makeDeck = () => {
 
   // Return the completed card deck
   return newDeck;
+};
+
+export const suitToSymbol = (suit) => {
+  let suitSymbol;
+  switch (suit) {
+    case "Hearts":
+      suitSymbol = "♥";
+      break;
+    case "Diamonds":
+      suitSymbol = "♦";
+      break;
+    case "Clubs":
+      suitSymbol = "♣";
+      break;
+    case "Spades":
+      suitSymbol = "♠";
+      break;
+    default:
+      suitSymbol = "?";
+      break;
+  }
+  return suitSymbol;
 };
 
 // Export functionality to create a shuffled 52-card deck
